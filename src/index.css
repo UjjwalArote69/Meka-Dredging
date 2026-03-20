@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+/* 2. Connect them to Tailwind v4 */
+@theme {
+  /* This makes `font-sans` use Montserrat */
+  --font-sans: "Montserrat", sans-serif;
+  /* This makes `font-serif` use Editorial Old */
+  --font-serif: "Editorial Old", serif;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-VariableFont_wght.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Add Editorial Old */
+@font-face {
+  font-family: 'Editorial';
+  src: url('/fonts/Editorial-Old.woff2') format('woff2');
+  font-weight: 400; /* Adjust if your specific file is bold/light */
+  font-style: normal;
+  font-display: swap;
+}
+
 @keyframes shimmer {
   0% {
     transform: translateY(-100%);
@@ -8,3 +33,5 @@
     transform: translateY(200%);
   }
 }
+
+
