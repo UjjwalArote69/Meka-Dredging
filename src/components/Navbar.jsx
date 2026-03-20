@@ -46,12 +46,12 @@ export default function Navbar() {
     <>
       {/* Cinematic Full-Screen Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 z-[100] bg-[#050A15] text-white transition-transform duration-[0.8s] ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        className={`fixed inset-0 z-100 bg-[#050A15] text-white transition-transform duration-[0.8s] ease-[cubic-bezier(0.76,0,0.24,1)] ${
           isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         <div className="flex justify-between items-center px-6 pt-10 pb-6 border-b border-white/5">
-          <span className="font-serif font-bold text-xl tracking-[0.1em] uppercase text-white">
+          <span className="font-serif font-bold text-xl tracking-widest uppercase text-white">
             Meka<span className="text-[#B38356]">Dredging</span>
           </span>
           <button 
@@ -92,9 +92,11 @@ export default function Navbar() {
             }}
           >
             <p className="text-[10px] tracking-[0.2em] uppercase text-slate-500 mb-6 font-bold">Initiate a Project</p>
-            <button className="bg-[#B38356] hover:bg-white hover:text-slate-900 text-white w-full py-5 text-[11px] tracking-[0.25em] uppercase font-bold transition-colors duration-300">
+            <Link to="/contact">
+              <button className="bg-[#B38356] hover:bg-white hover:text-slate-900 text-white w-full py-5 text-[11px] tracking-[0.25em] uppercase font-bold transition-colors duration-300">
               Engage With Us
             </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -110,7 +112,7 @@ export default function Navbar() {
         >
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3 cursor-pointer group">
-              <span className="font-serif font-bold text-xl tracking-[0.1em] uppercase text-slate-900">
+              <span className="font-serif font-bold text-xl tracking-widest uppercase text-slate-900">
                 Meka<span className="text-[#B38356]">Dredging</span>
               </span>
             </div>
@@ -124,7 +126,7 @@ export default function Navbar() {
                     href={link.href} 
                     className={
                       isActive 
-                        ? "text-[#B38356] relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-[2px] after:bg-[#B38356]"
+                        ? "text-[#B38356] relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:h-0.5 after:bg-[#B38356]"
                         : "text-slate-500 hover:text-slate-900 transition-colors duration-300"
                     }
                   >

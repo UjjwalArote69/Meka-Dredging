@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { Globe,ArrowRight, ArrowDownRight, Anchor } from 'lucide-react';
+import { Globe, ArrowRight, ArrowDownRight, Anchor } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +25,7 @@ const projectsData = [
     client: "State Government",
     volume: "850K Tonnes Rock",
     desc: "Construction of a 5km resilient breakwater system designed to mitigate extreme tidal erosion and safeguard local marine biomes and onshore industrial infrastructure.",
-    img: "https://images.unsplash.com/photo-1580983554869-775ce08c9038?q=80&w=2833&auto=format&fit=crop", // Ocean/breakwater
+    img: "https://images.unsplash.com/photo-1580983554869-775ce08c9038?q=80&w=2833&auto=format&fit=crop",
     aspect: "aspect-[16/9]"
   },
   {
@@ -34,7 +35,7 @@ const projectsData = [
     client: "International Joint Venture",
     volume: "12M CBM",
     desc: "Strategic land reclamation creating 250 hectares of new, structurally sound real estate for commercial port facilities, utilizing closed-loop sediment transport to achieve zero-turbidity.",
-    img: "https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=2874&auto=format&fit=crop", // Industrial marine
+    img: "https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=2874&auto=format&fit=crop",
     aspect: "aspect-[3/4]"
   },
   {
@@ -44,7 +45,7 @@ const projectsData = [
     client: "Indian Navy / Port Authority",
     volume: "1.5M CBM Annually",
     desc: "Ongoing, precision maintenance dredging of critical naval and commercial berths. Operating continuously without disrupting high-density vessel traffic in one of the world's busiest ports.",
-    img: "https://images.unsplash.com/photo-1605725613396-85ddce51a91e?q=80&w=2940&auto=format&fit=crop", // Harbor/ships
+    img: "https://images.unsplash.com/photo-1605725613396-85ddce51a91e?q=80&w=2940&auto=format&fit=crop",
     aspect: "aspect-[4/5]"
   }
 ];
@@ -66,7 +67,6 @@ export default function Projects() {
 
       // 2. Project List Reveal & Parallax
       projectRefs.current.forEach((project, i) => {
-        // Text info stagger reveal
         const textElements = project.querySelectorAll('.project-text');
         gsap.fromTo(textElements,
           { y: 50, opacity: 0 },
@@ -79,7 +79,6 @@ export default function Projects() {
           }
         );
 
-        // Image Parallax
         const img = projectImgRefs.current[i];
         if (img) {
           gsap.fromTo(img,
@@ -117,16 +116,16 @@ export default function Projects() {
       <section ref={heroRef} className="relative pt-48 pb-20 lg:pt-56 lg:pb-32 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col md:flex-row justify-between items-end gap-12">
           
-          <div className="max-w-4xl">
+          <div className="relative -left-10 max-w-4xl">
             <div className="overflow-hidden mb-6">
-              <p ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] font-semibold tracking-[0.2em] text-[10px] uppercase flex items-center gap-4">
+              <p ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] font-semibold tracking-[0.2em] text-[14px] uppercase flex items-center gap-4">
                 <span className="w-12 h-px bg-[#B38356]"></span> Featured Portfolio
               </p>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif text-slate-900 leading-[0.95]">
-              <div className="overflow-hidden"><div ref={(el) => addToRefs(el, heroTextRefs)}>Engineering</div></div>
-              <div className="overflow-hidden"><div ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] italic">The Impossible.</div></div>
+              <div className="overflow-"><div ref={(el) => addToRefs(el, heroTextRefs)}>Engineering</div></div>
+              <div className="overflow-"><div ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] italic">The Impossible.</div></div>
             </h1>
           </div>
 
@@ -145,7 +144,6 @@ export default function Projects() {
           
           <div className="flex flex-col gap-32 md:gap-48">
             {projectsData.map((project, index) => {
-              // Determine layout (alternate left/right image)
               const isEven = index % 2 === 0;
               
               return (
@@ -155,7 +153,6 @@ export default function Projects() {
                   className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center group`}
                 >
                   
-                  {/* Image Container */}
                   <div className={`w-full lg:w-3/5 relative overflow-hidden bg-slate-100 ${project.aspect}`}>
                     <div className="absolute inset-0 h-[130%] -top-[15%] w-full">
                       <img 
@@ -169,11 +166,9 @@ export default function Projects() {
                         className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-out"
                       />
                     </div>
-                    {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
 
-                  {/* Text Container */}
                   <div className="w-full lg:w-2/5 flex flex-col justify-center">
                     
                     <div className="flex items-center gap-4 mb-8 project-text">
@@ -205,11 +200,7 @@ export default function Projects() {
                       {project.desc}
                     </p>
 
-                    <div className="project-text mt-auto">
-                      <button className="flex items-center gap-4 text-[11px] tracking-[0.2em] uppercase font-bold text-slate-900 hover:text-[#B38356] transition-colors">
-                        View Full Case Study <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-300" />
-                      </button>
-                    </div>
+                    
 
                   </div>
 
@@ -222,8 +213,8 @@ export default function Projects() {
       </section>
 
       {/* Global Impact Map CTA */}
-      <section className="py-32 bg-[#050A15] text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#B38356]/10 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+      {/* <section className="py-32 bg-[#050A15] text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-150 h-150 bg-[#B38356]/10 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
           <Globe className="w-12 h-12 text-[#B38356] mx-auto mb-10 opacity-80" strokeWidth={1} />
@@ -237,59 +228,9 @@ export default function Projects() {
             View Active Deployment Map
           </button>
         </div>
-      </section>
+      </section> */}
 
-      {/* Footer */}
-      <footer className="bg-[#050A15] text-slate-400 py-24 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-20 mb-20 gap-10">
-             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white max-w-2xl">
-              Initiate your next <span className="text-[#B38356] italic">infrastructure</span> milestone.
-             </h2>
-             <button className="border border-white/20 hover:border-[#B38356] hover:bg-[#B38356] text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase font-bold transition-all duration-500 shrink-0">
-              Submit RFP Inquiry
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-5">
-              <span className="font-serif font-bold text-3xl tracking-[0.1em] uppercase text-white block mb-6">Meka <span className="text-[#B38356]">Dredging</span></span>
-              <p className="text-sm leading-relaxed max-w-sm font-light mb-8 opacity-80">
-                A division of the Meka Group. Executing premium marine infrastructure, capital dredging, and coastal protection since 1980.
-              </p>
-            </div>
-            
-            <div className="md:col-span-3 md:col-start-7">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Corporate</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">About The Group</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">HSEQ Standards</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Fleet Specifications</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Careers</a></li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-3">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Operations</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Capital Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Maintenance Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Reclamation Works</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Breakwater Construction</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs font-light opacity-60">
-            <p>© {new Date().getFullYear()} Meka Dredging. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      <Footer />
     </div>
   );
 }

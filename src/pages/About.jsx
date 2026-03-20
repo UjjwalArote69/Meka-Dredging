@@ -3,6 +3,7 @@ import { ShieldCheck, Globe, Anchor, ArrowDownRight, Ship } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,22 +26,22 @@ export default function About() {
       const heroTl = gsap.timeline();
       
       heroTl.fromTo(heroImageRef.current, 
-        { scale: 1.2, filter: 'brightness(0.6) contrast(1.1)' },
-        { scale: 1, filter: 'brightness(1) contrast(1)', duration: 2.5, ease: 'power3.out' }
+        { scale: 1.15, filter: 'brightness(0.6) contrast(1.1)' },
+        { scale: 1, filter: 'brightness(1) contrast(1)', duration: 2.2, ease: 'power3.inOut' }
       );
 
       heroTl.fromTo(heroTextRefs.current,
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: 'power4.out' },
-        "-=1.8"
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power3.out' },
+        "-=1.2"
       );
 
       // 2. Story Section Stagger
       if (storyRef.current) {
         gsap.fromTo(storyRef.current.children,
-          { y: 50, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: 'power3.out',
+            y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out',
             scrollTrigger: {
               trigger: storyRef.current,
               start: "top 80%",
@@ -53,9 +54,9 @@ export default function About() {
       parallaxImageRefs.current.forEach((img) => {
         if (img) {
           gsap.fromTo(img,
-            { y: '-15%' },
+            { y: '-10%' },
             {
-              y: '15%',
+              y: '10%',
               ease: 'none',
               scrollTrigger: {
                 trigger: img.parentElement,
@@ -71,12 +72,12 @@ export default function About() {
       // 4. Fleet Section Animation
       if (fleetRef.current) {
         gsap.fromTo(fleetRef.current.children,
-          { y: 60, opacity: 0 },
+          { y: 50, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out',
+            y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out',
             scrollTrigger: {
               trigger: fleetRef.current,
-              start: "top 80%",
+              start: "top 85%",
             }
           }
         );
@@ -85,9 +86,9 @@ export default function About() {
       // 5. Ethos Rows Reveal
       ethosRefs.current.forEach((el, index) => {
         gsap.fromTo(el,
-          { opacity: 0, x: -30 },
+          { opacity: 0, x: -20 },
           {
-            opacity: 1, x: 0, duration: 1, delay: index * 0.1, ease: 'power3.out',
+            opacity: 1, x: 0, duration: 0.8, delay: index * 0.1, ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
@@ -99,12 +100,12 @@ export default function About() {
       // 6. HSEQ Fade In
       if (hseqRef.current) {
         gsap.fromTo(hseqRef.current.children,
-          { y: 40, opacity: 0 },
+          { y: 30, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: 'power3.out',
+            y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out',
             scrollTrigger: {
               trigger: hseqRef.current,
-              start: "top 75%",
+              start: "top 80%",
             }
           }
         );
@@ -128,36 +129,36 @@ export default function About() {
       <Navbar />
 
       {/* Advanced Hero Section */}
-      <section ref={heroRef} className="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden bg-[#FAFAFA]">
+      <section ref={heroRef} className="relative pt-40 lg:pt-52 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col lg:flex-row justify-between lg:items-end gap-12">
           
-          <div className="max-w-4xl">
+          <div className="max-w-4xl md:h-72">
             <div className="overflow-hidden mb-6">
-              <p ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] font-semibold tracking-[0.2em] text-[10px] uppercase flex items-center gap-4">
+              <p ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356]  font-semibold tracking-[0.2em] text-[12px] uppercase flex items-center gap-4">
                 <span className="w-12 h-px bg-[#B38356]"></span> Corporate Heritage
               </p>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif text-slate-900 leading-[0.95]">
               <div className="overflow-hidden"><div ref={(el) => addToRefs(el, heroTextRefs)}>Decades of</div></div>
-              <div className="overflow-hidden"><div ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] italic">Mastery.</div></div>
+              <div className="overflow-"><div ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] italic ">Mastery.</div></div>
             </h1>
           </div>
 
           {/* Animated Scroll Indicator */}
           <div className="overflow-hidden hidden lg:block pb-4">
-            <div ref={(el) => addToRefs(el, heroTextRefs)} className="flex items-center gap-4 text-slate-400">
-              <span className="text-[10px] tracking-[0.2em] uppercase font-bold rotate-90 transform origin-left w-16">Scroll</span>
-              <div className="w-px h-24 bg-slate-300 relative overflow-hidden">
+            <div ref={(el) => addToRefs(el, heroTextRefs)} className="flex items-center gap-2 text-slate-400">
+              <span className="text-[12px] relative left-2 tracking-[0.2em] uppercase font-bold rotate-90 transform origin-left w-12 ">Scroll</span>
+              <div className="w-px h-30 bg-slate-300 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-[#B38356] animate-[shimmer_2s_infinite]"></div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Hero Image - Edge to Edge */}
-        <div className="relative h-[450px] md:h-[650px] w-full mt-16 lg:mt-24">
-          <div className="absolute inset-0 overflow-hidden bg-slate-200">
+        {/* Hero Image - Edge to Edge - Fixed Heights */}
+        <div className="relative h-[460px] md:h-[600px] w-full mt-16 lg:mt-24">
+          <div className="absolute inset-0 overflow-hidden bg-slate-20">
             <img 
               ref={heroImageRef}
               src="/hero/meka-dredging-hero.jpg" 
@@ -165,8 +166,8 @@ export default function About() {
               className="w-full h-full object-cover object-center origin-center"
             />
           </div>
-          {/* Subtle gradient to blend image into next section */}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent"></div>
+          {/* Subtle gradient to blend into the next section */}
+          {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent opacity-80"></div> */}
         </div>
       </section>
 
@@ -175,7 +176,6 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 relative">
             
-            {/* Sticky Left Narrative */}
             <div className="lg:col-span-5 relative">
               <div className="lg:sticky lg:top-40">
                 <p className="text-[#B38356] font-semibold tracking-[0.2em] text-[10px] uppercase mb-6">The Genesis</p>
@@ -192,11 +192,9 @@ export default function About() {
               </div>
             </div>
 
-            {/* Right Column Parallax Spread */}
-            <div ref={storyRef} className="lg:col-span-7 lg:col-start-6 space-y-32 pt-12 lg:pt-0">
+            <div ref={storyRef} className="lg:col-span-7 lg:col-start-6 space-y-24 md:space-y-32 pt-12 lg:pt-0">
               
-              {/* Image 1: Tall Portrait */}
-              <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden bg-slate-100 max-w-xl ml-auto">
+              <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden bg-slate-100 max-w-xl ml-auto shadow-sm">
                 <div className="absolute inset-0 h-[130%] -top-[15%] w-full">
                   <img 
                     ref={(el) => addToRefs(el, parallaxImageRefs)}
@@ -208,11 +206,11 @@ export default function About() {
                 <div className="absolute bottom-6 left-6 text-white z-10">
                   <p className="text-[10px] tracking-[0.2em] uppercase font-bold">1980 / Lagos, Nigeria</p>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
               </div>
 
-              {/* Image 2: Wide Landscape, offset left */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-slate-100 -ml-6 lg:-ml-24 shadow-2xl">
+              {/* Added thick border to create an editorial overlap effect */}
+              <div className="relative -left-55 aspect-video overflow-hidden bg-slate-100 -ml-2 lg:-ml-24 shadow-2xl border-8 border-white">
                 <div className="absolute inset-0 h-[130%] -top-[15%] w-full">
                   <img 
                     ref={(el) => addToRefs(el, parallaxImageRefs)}
@@ -222,9 +220,9 @@ export default function About() {
                   />
                 </div>
                 <div className="absolute bottom-6 left-6 text-white z-10">
-                  <p className="text-[10px] tracking-[0.2em] uppercase font-bold">Present / Global Fleet</p>
+                  <p className="text-[10px] tracking-[0.2em] uppercase font-bold drop-shadow-md">Present / Global Fleet</p>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
               </div>
 
             </div>
@@ -232,7 +230,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* The Arsenal / Fleet Section (NEW) */}
+      {/* The Arsenal / Fleet Section */}
       <section className="py-32 bg-[#FAFAFA] border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="mb-20">
@@ -246,12 +244,13 @@ export default function About() {
               { title: "Trailing Suction Hopper", desc: "For maintenance and reclamation.", specs: "Capacities up to 30,000 m³." },
               { title: "Auxiliary Fleet", desc: "Tugboats, multicats, and survey vessels.", specs: "Supporting global deployment." }
             ].map((vessel, idx) => (
-              <div key={idx} className="group bg-white p-8 border border-slate-200 hover:border-[#B38356] transition-colors duration-500 cursor-pointer">
-                <Ship className="w-8 h-8 text-[#B38356] mb-8 opacity-80" strokeWidth={1.5} />
+              // Upgraded interaction: Hover lifts card, warms background, and scales icon
+              <div key={idx} className="group bg-white p-8 border border-slate-200 hover:border-[#B38356]/50 hover:bg-[#fffdfa] hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col h-full">
+                <Ship className="w-8 h-8 text-[#B38356] mb-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 transform origin-left" strokeWidth={1.5} />
                 <h3 className="text-xl font-serif text-slate-900 mb-3">{vessel.title}</h3>
-                <p className="text-slate-500 font-light text-sm mb-6">{vessel.desc}</p>
-                <div className="pt-4 border-t border-slate-100">
-                  <p className="text-[10px] tracking-[0.1em] text-slate-400 font-bold uppercase">{vessel.specs}</p>
+                <p className="text-slate-500 font-light text-sm mb-8 flex-grow">{vessel.desc}</p>
+                <div className="pt-5 border-t border-slate-100 group-hover:border-[#B38356]/20 transition-colors duration-500">
+                  <p className="text-[10px] tracking-widest text-slate-400 group-hover:text-[#B38356] font-bold uppercase transition-colors duration-500">{vessel.specs}</p>
                 </div>
               </div>
             ))}
@@ -259,7 +258,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Corporate Ethos - Premium Row Layout */}
+      {/* Corporate Ethos */}
       <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="mb-20">
@@ -288,16 +287,16 @@ export default function About() {
               <div 
                 key={index} 
                 ref={(el) => addToRefs(el, ethosRefs)} 
-                className="group border-b border-slate-900/10 py-10 lg:py-16 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-[#FAFAFA] transition-colors duration-500 px-4 -mx-4 cursor-pointer"
+                className="group border-b border-slate-900/10 py-10 lg:py-16 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-[#FAFAFA] transition-colors duration-500 px-4 md:px-8 -mx-4 md:-mx-8 cursor-pointer rounded-xl"
               >
-                <div className="flex items-center gap-8 md:w-1/2">
+                <div className="flex items-center gap-6 md:gap-8 md:w-1/2">
                   <span className="text-3xl font-serif text-slate-300 group-hover:text-[#B38356] transition-colors duration-500">0{index + 1}</span>
-                  <h4 className="text-3xl md:text-4xl font-serif text-slate-900">{item.title}</h4>
+                  <h4 className="text-2xl md:text-4xl font-serif text-slate-900">{item.title}</h4>
                 </div>
                 <div className="md:w-1/2 flex items-center justify-between gap-8">
                   <p className="text-slate-500 text-sm leading-relaxed font-light max-w-md">{item.desc}</p>
-                  <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-[#B38356] group-hover:bg-[#B38356] group-hover:text-white transition-all duration-500 shrink-0">
-                    <ArrowDownRight className="w-5 h-5 -rotate-90 group-hover:rotate-0 transition-transform duration-500" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-slate-200 flex items-center justify-center text-[#B38356] group-hover:bg-[#B38356] group-hover:text-white group-hover:border-[#B38356] transition-all duration-500 shrink-0 shadow-sm">
+                    <ArrowDownRight className="w-4 h-4 md:w-5 md:h-5 -rotate-90 group-hover:rotate-0 transition-transform duration-500" />
                   </div>
                 </div>
               </div>
@@ -308,9 +307,9 @@ export default function About() {
 
       {/* Dark HSEQ Section */}
       <section className="py-32 md:py-48 bg-[#050A15] text-white relative overflow-hidden">
-        {/* Cinematic Blur Elements */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#B38356]/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-800/50 blur-[100px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
+        {/* Fixed Background Blob Sizes */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#B38356]/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-800/50 blur-[100px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
@@ -327,92 +326,40 @@ export default function About() {
                 At Meka Dredging, the safety of our crew and the preservation of the marine environment supersede all other operational metrics. We operate under stringent, internationally certified HSEQ frameworks. 
               </p>
               
-              <div className="grid sm:grid-cols-2 gap-6 mb-12">
+              <div className="grid grid-cols-2 gap-4 md:gap-6 mb-12">
                 {[
                   { num: '9001:2015', label: 'Quality Management' },
                   { num: '14001:2015', label: 'Environmental Systems' },
                   { num: '45001:2018', label: 'Occupational Health' },
                   { num: 'Zero', label: 'LTI Target Culture' }
                 ].map((cert, idx) => (
-                  <div key={idx} className="bg-white/5 border border-white/10 p-6 backdrop-blur-sm">
-                    <p className="text-[#B38356] font-serif text-2xl mb-2">{cert.num}</p>
-                    <p className="text-[10px] tracking-[0.1em] uppercase text-slate-400 font-bold">{cert.label}</p>
+                  <div key={idx} className="bg-white/5 border border-white/10 p-5 md:p-6 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                    <p className="text-[#B38356] font-serif text-xl md:text-2xl mb-2">{cert.num}</p>
+                    <p className="text-[9px] md:text-[10px] tracking-widest uppercase text-slate-400 font-bold">{cert.label}</p>
                   </div>
                 ))}
               </div>
 
-              <button className="bg-[#B38356] hover:bg-white hover:text-slate-900 text-white px-8 py-4 text-[10px] tracking-[0.2em] uppercase font-bold transition-all duration-500">
-                Download Full HSEQ Policy
-              </button>
+              
             </div>
 
-            {/* Cinematic HSEQ Image */}
-            <div className="lg:col-span-5 lg:col-start-8 relative aspect-[4/5] overflow-hidden bg-slate-900">
+            <div className="lg:col-span-5 lg:col-start-8 relative aspect-[4/5] overflow-hidden bg-slate-900 shadow-2xl rounded-sm">
               <div className="absolute inset-0 h-[120%] -top-[10%] w-full">
                 <img 
                   ref={(el) => addToRefs(el, parallaxImageRefs)}
                   src="https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=2874&auto=format&fit=crop" 
                   alt="Marine safety operations" 
-                  className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+                  className="w-full h-full object-cover opacity-50 mix-blend-luminosity"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#050A15]/80 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#050A15]/90 via-transparent to-transparent"></div>
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#050A15] text-slate-400 py-24 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-20 mb-20 gap-10">
-             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white max-w-2xl">
-              Initiate your next <span className="text-[#B38356] italic">infrastructure</span> milestone.
-             </h2>
-             <button className="bg-[#B38356] hover:bg-white hover:text-slate-900 text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase font-bold transition-all duration-500 shrink-0">
-              Submit RFP Inquiry
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-5">
-              <span className="font-serif font-bold text-3xl tracking-[0.1em] uppercase text-white block mb-6">Meka <span className="text-[#B38356]">Dredging</span></span>
-              <p className="text-sm leading-relaxed max-w-sm font-light mb-8 opacity-80">
-                A division of the Meka Group. Executing premium marine infrastructure, capital dredging, and coastal protection since 1980.
-              </p>
-            </div>
-            
-            <div className="md:col-span-3 md:col-start-7">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Corporate</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">About The Group</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">HSEQ Standards</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Fleet Specifications</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Careers</a></li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-3">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Operations</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Capital Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Maintenance Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Reclamation Works</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Breakwater Construction</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs font-light opacity-60">
-            <p>© {new Date().getFullYear()} Meka Dredging. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Global Animation Styles */}
       <style dangerouslySetInnerHTML={{__html: `

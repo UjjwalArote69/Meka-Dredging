@@ -3,6 +3,7 @@ import { ArrowRight, Crosshair, Layers, ShieldCheck, Waves } from 'lucide-react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +77,6 @@ export default function Expertise() {
         const textContent = el.querySelector('.cap-text');
         const imageContent = el.querySelector('.cap-image');
 
-        // Text fade up
         gsap.fromTo(textContent,
           { y: 60, opacity: 0 },
           {
@@ -88,7 +88,6 @@ export default function Expertise() {
           }
         );
 
-        // Image Parallax Effect
         if (imageContent) {
           gsap.fromTo(imageContent,
             { y: '-15%', scale: 1.1 },
@@ -138,16 +137,16 @@ export default function Expertise() {
       {/* Bright Cinematic Hero Section */}
       <section ref={heroRef} className="relative pt-48 pb-20 lg:pt-64 lg:pb-32 bg-[#FAFAFA] border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-start gap-12">
-          <div className="max-w-5xl">
-            <div className="overflow-hidden mb-6">
-              <p ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] font-semibold tracking-[0.2em] text-[10px] uppercase flex items-center gap-4">
-                <span className="w-12 h-px bg-[#B38356]"></span> Core Competencies
+          <div className=" max-w-5xl">
+            <div className= "relative left-10 overflow-hidden mb-6">
+              <p ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] font-semibold tracking-[0.2em] text-[14px] uppercase flex items-center gap-4">
+                <span className=" w-12 h-px bg-[#B38356]"></span> Core Competencies
               </p>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif text-slate-900 leading-[0.95]">
-              <div className="overflow-hidden"><div ref={(el) => addToRefs(el, heroTextRefs)}>Operational</div></div>
-              <div className="overflow-hidden"><div ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] italic">Superiority.</div></div>
+            <h1 className="relative left-16 text-5xl md:text-7xl lg:text-[7.5rem] font-serif text-slate-900 leading-[0.95]">
+              <div className="overflow-"><div ref={(el) => addToRefs(el, heroTextRefs)}>Operational</div></div>
+              <div className="overflow-"><div ref={(el) => addToRefs(el, heroTextRefs)} className="text-[#B38356] italic">Superiority.</div></div>
             </h1>
           </div>
         </div>
@@ -167,7 +166,7 @@ export default function Expertise() {
         </div>
       </section>
 
-      {/* The Core Capabilities - Sticky Scroll Layout */}
+      {/* The Core Capabilities */}
       <section className="bg-[#FAFAFA] relative z-10 border-t border-slate-100 py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           
@@ -178,7 +177,6 @@ export default function Expertise() {
               className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 min-h-[90vh] py-24 border-b border-slate-200 last:border-0"
             >
               
-              {/* Left Side: Massive Typography & Details */}
               <div className="w-full lg:w-1/2 flex flex-col justify-center cap-text">
                 <span className="text-[12rem] lg:text-[16rem] font-serif text-slate-100 leading-none absolute -ml-12 lg:-ml-24 select-none pointer-events-none">
                   {cap.id}
@@ -197,10 +195,9 @@ export default function Expertise() {
                     {cap.desc}
                   </p>
 
-                  {/* Technical Specs List */}
                   <ul className="space-y-4">
                     {cap.specs.map((spec, i) => (
-                      <li key={i} className="flex items-center gap-4 text-xs tracking-[0.1em] uppercase font-bold text-slate-600">
+                      <li key={i} className="flex items-center gap-4 text-xs tracking-widest uppercase font-bold text-slate-600">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#B38356]"></div>
                         {spec}
                       </li>
@@ -209,8 +206,7 @@ export default function Expertise() {
                 </div>
               </div>
 
-              {/* Right Side: Parallax Image */}
-              <div className="w-full lg:w-1/2 h-[500px] lg:h-[700px] relative overflow-hidden bg-slate-200">
+              <div className="w-full lg:w-1/2 h-125 lg:h-175 relative overflow-hidden bg-slate-200">
                 <div className="absolute inset-0 h-[130%] -top-[15%] w-full">
                   <img 
                     src={cap.img} 
@@ -218,7 +214,7 @@ export default function Expertise() {
                     className="cap-image w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA]/50 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#FAFAFA]/50 to-transparent pointer-events-none"></div>
               </div>
 
             </div>
@@ -288,49 +284,7 @@ export default function Expertise() {
         </div>
       </section>
 
-      {/* Standard Dark Footer */}
-      <footer className="bg-[#050A15] text-slate-400 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-white/10 pb-20 mb-12">
-            <div className="md:col-span-5">
-              <span className="font-serif font-bold text-3xl tracking-[0.1em] uppercase text-white block mb-6">Meka <span className="text-[#B38356]">Dredging</span></span>
-              <p className="text-sm leading-relaxed max-w-sm font-light mb-8 opacity-80">
-                A division of the Meka Group. Executing premium marine infrastructure, capital dredging, and coastal protection since 1980.
-              </p>
-            </div>
-            
-            <div className="md:col-span-3 md:col-start-7">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Corporate</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">About The Group</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">HSEQ Standards</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Fleet Specifications</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Careers</a></li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-3">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Operations</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Capital Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Maintenance Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Reclamation Works</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Breakwater Construction</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center text-xs font-light opacity-60">
-            <p>© {new Date().getFullYear()} Meka Dredging. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      <Footer />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -286,16 +287,15 @@ export default function Contact() {
       {/* Cinematic Parallax Break */}
       <section className="bg-[#FAFAFA] py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden bg-slate-200">
+          <div className="relative h-100 md:h-150 w-full overflow-hidden bg-slate-200">
             <div className="absolute inset-0 h-[130%] -top-[15%] w-full">
               <img 
                 ref={imageRef}
-                src="/hero/meka-dredging-hero-2.jpg" // Using an existing massive ship/ocean shot
+                src="/hero/meka-dredging-hero-2.jpg"
                 alt="Meka Dredging Global Operations" 
                 className="w-full h-full object-cover grayscale opacity-90"
               />
             </div>
-            {/* Central Badge */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="bg-white/90 backdrop-blur-md px-10 py-8 text-center border border-white">
                 <p className="text-[#B38356] font-serif text-4xl mb-2">108+</p>
@@ -306,49 +306,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Standard Dark Footer */}
-      <footer className="bg-[#050A15] text-slate-400 py-24 mt-12">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-white/10 pb-20 mb-12">
-            <div className="md:col-span-5">
-              <span className="font-serif font-bold text-3xl tracking-[0.1em] uppercase text-white block mb-6">Meka <span className="text-[#B38356]">Dredging</span></span>
-              <p className="text-sm leading-relaxed max-w-sm font-light mb-8 opacity-80">
-                A division of the Meka Group. Executing premium marine infrastructure, capital dredging, and coastal protection since 1980.
-              </p>
-            </div>
-            
-            <div className="md:col-span-3 md:col-start-7">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Corporate</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">About The Group</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">HSEQ Standards</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Fleet Specifications</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Careers</a></li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-3">
-              <h4 className="text-white text-[10px] tracking-[0.25em] uppercase font-bold mb-8">Operations</h4>
-              <ul className="space-y-4 text-sm font-light opacity-80">
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Capital Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Maintenance Dredging</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Reclamation Works</a></li>
-                <li><a href="#" className="hover:text-[#B38356] hover:opacity-100 transition-all">Breakwater Construction</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center text-xs font-light opacity-60">
-            <p>© {new Date().getFullYear()} Meka Dredging. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      <Footer />
     </div>
   );
 }
