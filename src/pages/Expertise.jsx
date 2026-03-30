@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Crosshair, Layers, ShieldCheck, Waves } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from '../components/Navbar'; 
-import Footer from '../components/Footer';
+import Navbar from '../components/layout/Navbar'; 
+import Footer from '../components/layout/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
